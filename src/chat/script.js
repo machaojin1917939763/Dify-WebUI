@@ -3,13 +3,13 @@ class ChatApp {
         this.chatMessages = document.getElementById('chatMessages');
         this.userInput = document.getElementById('userInput');
         this.sendButton = document.getElementById('sendButton');
-        this.apiKey = 'app-7BDgTOmgbJZrzGWIQ8OjFZ6Y';
-        this.baseUrl = 'https://mify-be.pt.xiaomi.com/api/v1';
+        this.apiKey = '';
+        this.baseUrl = '';
         this.fileInput = document.getElementById('fileInput');
         this.uploadButton = document.getElementById('uploadButton');
         this.attachmentPreview = document.getElementById('attachmentPreview');
         this.currentUploadedFile = null;
-        this.lastMessageId = null;  // 添加这一行
+        this.lastMessageId = null; 
         this.conversationItems = document.getElementById('conversationItems');
         this.currentConversationId = '';
         this.firstMessageId = null;
@@ -51,10 +51,9 @@ class ChatApp {
         this.voiceContainer = document.getElementById('voiceContainer');
         this.mediaRecorder = null;
         this.audioChunks = [];
-        this.currentAudioFile = null;  // 添加新属性存储当前对话文件
+        this.currentAudioFile = null; 
         this.audioStatus = false;
         this.loadSettings();
-        // 初始化设置相关的事件监听
         this.initSettingsHandlers();
         this.init();
 
@@ -166,10 +165,9 @@ class ChatApp {
         setTimeout(() => requestAnimationFrame(updateWaveHeights), 50);
     }
 
-    // 可以添加一个初始化方法
+
     initialize() {
         this.configureMarked();
-        // 监听 DOM 变化，为新添加的代码块添加事件监听器
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 if (mutation.addedNodes.length) {
@@ -200,7 +198,6 @@ class ChatApp {
 
     toggleVoiceInterface() {
         const show = this.voiceContainer.style.display === 'none';
-        console.log('show', show);
         if (show) {
             console.log('voice interface');
             this.toggleVoiceStates = {
@@ -211,6 +208,7 @@ class ChatApp {
             this.welcomePage.style.display = 'none';
             this.chatContainer.style.display = 'flex';
             this.audioStatus = true;
+            this.welcomePage.style.display = 'none';
         } else {
             console.log('Hiding voice interface');
             this.voiceContainer.style.display = 'none';

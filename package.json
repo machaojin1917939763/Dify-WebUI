@@ -41,7 +41,7 @@
   "dependencies": {
     "electron-log": "^5.2.4",
     "electron-squirrel-startup": "^1.0.1",
-    "electron-updater": "^6.3.9",
+    "electron-updater": "^6.4.0",
     "update-electron-app": "^3.1.0"
   },
   "build": {

@@ -710,3 +710,17 @@ textarea::-webkit-scrollbar-track {
 .think-mode:hover {
     background: rgba(255, 255, 255, 0.3);
 }
+
+.stop-responses {
+    margin-left: 8px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.stop-responses:hover {
+    background: red;
+}

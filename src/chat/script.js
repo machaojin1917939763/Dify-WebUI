@@ -71,6 +71,8 @@ class ChatApp {
         this.currentSettingsIndex = 0;
         this.appNameForApiKey = new Map();
         this.settingsInitialized = false;
+        // 记录对话回复里的taskId
+        this.taskId = '';
         this.loadSettings();
         this.initSettingsHandlers();
         // 配置 marked
@@ -87,6 +89,13 @@ class ChatApp {
         document.querySelectorAll('.current-app-tag .switch-app').forEach(button => {
             button.addEventListener('click', () => {
                 this.showAppSelector();
+            });
+        });
+
+        // 为所有停止回复按钮绑定事件
+        document.querySelectorAll('.current-app-tag .stop-responses').forEach(button => {
+            button.addEventListener('click', () => {
+                this.stopResponses();
             });
         });
 
@@ -957,6 +966,9 @@ class ChatApp {
             const reader = response.body.getReader();
             const decoder = new TextDecoder();
             
+            // 标记这是否是新对话的第一条消息
+            const isNewConversation = !this.currentConversationId;
+
             while (true) {
                 const { done, value } = await reader.read();
                 if (done) break;
@@ -968,6 +980,14 @@ class ChatApp {
                     if (line.startsWith('data: ')) {
                         try {
                             const data = JSON.parse(line.slice(6));
+                            // 当前回复的taskId
+                            if (!this.taskId && data.task_id) {
+                                this.taskId = data.task_id;
+                                // 显示停止回复按钮
+                                document.querySelectorAll('.stop-responses').forEach(button => {
+                                    button.style.display = 'inline-block';
+                                });
+                            }
                             switch (data.event) {
                                 case 'message':
                                     if (isFirstMessage) {
@@ -1016,6 +1036,11 @@ class ChatApp {
                                     break;
                                 case 'message_end':
                                     messageContent.classList.remove('typing');
+                                    this.taskId = '';
+                                    // 因此停止回复按钮
+                                    document.querySelectorAll('.stop-responses').forEach(button => {
+                                        button.style.display = 'none';
+                                    });
                                     break;
                             }
                         } catch (e) {
@@ -1024,6 +1049,12 @@ class ChatApp {
                         }
                     }
                 }
+            }
+
+            // 在消息接收完成后，如果是新会话的第一条消息，自动重命名会话
+            if (isNewConversation && this.currentConversationId) {
+                // 自动生成会话名称
+                await this.renameConversation(this.currentConversationId, '', true);
             }
         } catch (error) {
             console.error('发送消息失败:', error);
@@ -1037,6 +1068,38 @@ class ChatApp {
         // 在消息发送时隐藏欢迎页面
         this.welcomePage.style.display = 'none';
         this.chatContainer.style.display = 'flex';
+    }
+
+    /**
+     * 停止当前聊天会话中进行中的AI响应。
+     * 
+     * 该方法：
+     * 1. 向服务器发送POST请求以停止消息生成
+     * 2. 在请求中包含用户信息和认证信息
+     * 3. 无论请求结果如何，都会隐藏UI中所有停止回复按钮
+     * 
+     * @async
+     * @returns {Promise<void>}
+     * @throws {Error} 将错误记录到控制台，但不会传播它们
+     */
+    async stopResponses() {
+        try {
+            fetch(`${this.baseUrl}/chat-messages/${this.taskId}/stop`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${this.apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user: this.user })
+            });
+        } catch (error) {
+            console.error('停止响应失败:', error);
+        } finally {
+            // 隐藏停止回复按钮
+            document.querySelectorAll('.stop-responses').forEach(button => {
+                button.style.display = 'none';
+            });
+        }
     }
 
     arrayBufferToBase64(buffer) {
@@ -1090,6 +1153,42 @@ class ChatApp {
             return {
                 name: "未命名应用"
             };
+        }
+    }
+
+    /**
+     * 重命名对话。
+     *
+     * @param {string} conversationId - 要重命名的对话ID。
+     * @param {string} [newName] - 对话的新名称。若 auto_generate 为 true 时，该参数可不传。
+     * @param {boolean} [auto_generate] - 是否自动生成名称的标志。
+     * @returns {Promise<string|undefined>} 如果成功，返回对话的新名称。
+     * @throws 如果重命名过程失败，将抛出错误。
+     */
+    async renameConversation(conversationId, newName, auto_generate) {
+        try {
+            const response = await fetch(`${this.baseUrl}/conversations/${conversationId}/name`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${this.apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    user: this.user,
+                    name: newName,
+                    auto_generate: auto_generate
+                })
+            }
+            );
+            const data = await response.json();
+            if (data.name) {
+                console.log('会话重命名成功');
+                return data.name;
+            } else {
+                console.log('会话重命名失败');
+            }
+        } catch (error) {
+            console.error('重命名会话失败:', error);
         }
     }
 

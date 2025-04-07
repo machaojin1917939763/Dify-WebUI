@@ -14,7 +14,7 @@
 .conversation-header {
     padding: 0.75rem 1rem;
     font-weight: bold;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: none;
     font-size: 0.95rem;
 }
 
@@ -46,8 +46,8 @@
 
 .sidebar {
     width: var(--sidebar-width);
-    background: var(--bg-color);
-    border-right: 1px solid #e5e5e5;
+    background: #ffffff;
+    border-right: none;
     position: fixed;
     left: 0;
     top: 0;
@@ -91,7 +91,7 @@
     flex: 1;
     overflow-y: auto;
     padding: 1rem;
-    background: var(--bg-color);
+    background: #ffffff;
     margin-bottom: calc(var(--header-height) + 2rem);
     padding-bottom: 4rem;
 }
@@ -102,10 +102,10 @@
     left: var(--sidebar-width);
     right: 0;
     width: auto;
-    border: 1px solid #e5e5e5;
+    border: none;
     border-radius: 0.75rem 0.75rem 0 0;
-    background: var(--bg-color);
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    box-shadow: none;
     padding: 1rem;
     z-index: 100;
     transition: left 0.3s var(--animation-timing-function);
@@ -122,7 +122,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: var(--bg-color);
+    background: #ffffff;
 }
 
 .welcome-content {
@@ -138,7 +138,7 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    background: var(--bg-color);
+    background: #ffffff;
 }
 
 .think-mode-content {
@@ -163,7 +163,7 @@
     background: white;
     border-radius: 1rem;
     padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 @media (max-width: 768px) {
@@ -204,7 +204,7 @@
 textarea {
     flex: 1;
     padding: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: none;
     border-radius: 0.5rem;
     resize: none;
     font-family: inherit;
@@ -215,42 +215,43 @@ textarea {
     overflow-y: auto;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(8px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: none;
     transition: all 0.3s ease;
 }
 
 textarea:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
-}
-
-textarea::-webkit-scrollbar {
-    width: 6px;
-}
-
-textarea::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 3px;
-}
-
-textarea::-webkit-scrollbar-track {
-    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 /* 滚动条样式 */
 .conversation-items::-webkit-scrollbar,
 .chat-messages::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 
 .conversation-items::-webkit-scrollbar-thumb,
 .chat-messages::-webkit-scrollbar-thumb {
-    background: #ccc;
-    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
 .conversation-items::-webkit-scrollbar-track,
 .chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* 文本框滚动条样式 */
+textarea::-webkit-scrollbar {
+    width: 4px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+textarea::-webkit-scrollbar-track {
     background: transparent;
 }
 
@@ -298,12 +299,12 @@ textarea::-webkit-scrollbar-track {
 }
 
 .conversation-item:hover {
-    background-color: var(--message-bg);
+    background: #f8f8f8;
 }
 
 .conversation-item.active {
-    background-color: #000000;
-    color: white;
+    background: #f2f2f2;
+    font-weight: 500;
 }
 
 .conversation-item.active .time {
@@ -337,7 +338,7 @@ textarea::-webkit-scrollbar-track {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: none;
 }
 
 .new-chat-button {
@@ -405,11 +406,14 @@ textarea::-webkit-scrollbar-track {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-align: left;
     font-size: 0.95rem;
+    box-shadow: none;
 }
 
 .welcome-suggestion-items button:hover {
     background: var(--message-bg);
     border-color: var(--primary-color);
+    transform: none;
+    box-shadow: none;
 }
 
 /* 遮罩层样式 */
@@ -438,7 +442,7 @@ textarea::-webkit-scrollbar-track {
     align-items: center;
     padding: 1.35rem;
     gap: 0.75rem;
-    border-top: 1px solid #e5e5e5;
+    border-top: none;
     background: var(--message-bg);
     margin-top: auto;
 }
@@ -448,7 +452,7 @@ textarea::-webkit-scrollbar-track {
     height: 2.5rem;
     border-radius: 50%;
     object-fit: cover;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .user-name {
@@ -516,7 +520,7 @@ textarea::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
     border: none;
     color: white;
 }
@@ -534,7 +538,7 @@ textarea::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: none;
 }
 
 .show-sidebar-button.visible {
@@ -580,7 +584,7 @@ textarea::-webkit-scrollbar-track {
     letter-spacing: -0.02em;
     line-height: 1.2;
     animation: titleFadeIn 0.8s ease-out, gradientShift 6s ease infinite;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    text-shadow: none;
 }
 
 .welcome-content h1::after {
@@ -634,12 +638,12 @@ textarea::-webkit-scrollbar-track {
 
 /* 悬停效果 */
 .welcome-content h1:hover {
-    transform: translateY(-2px);
+    transform: none;
     transition: transform 0.3s ease;
 }
 
 .welcome-content h1:hover::after {
-    transform: scaleX(1.1);
+    transform: scaleX(1);
     transition: transform 0.3s ease;
 }
 
@@ -655,7 +659,7 @@ textarea::-webkit-scrollbar-track {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -665,11 +669,12 @@ textarea::-webkit-scrollbar-track {
     max-width: 90%;
     overflow: hidden;
     text-overflow: ellipsis;
+    border: none;
 }
 
 .current-app-tag:hover {
-    transform: translateX(-50%) translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(-50%);
+    box-shadow: none;
 }
 
 .current-app-tag .app-icon {

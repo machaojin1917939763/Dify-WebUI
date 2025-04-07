@@ -24,9 +24,9 @@
     gap: 0.8rem;
     padding: 0.8rem;
     margin: 0.8rem 0;
-    background: rgba(255, 255, 255, 0.5);
+    background: #ffffff;
     border-radius: 1rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border: none;
 }
 
 .theme-option {
@@ -34,18 +34,18 @@
     aspect-ratio: 1;
     border-radius: 0.75rem;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: none;
     transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
 }
 
 .theme-option:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: none;
+    box-shadow: none;
 }
 
 .theme-option.active {
-    border-color: white;
-    transform: scale(1.1);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: transparent;
+    transform: none;
+    box-shadow: none;
 }

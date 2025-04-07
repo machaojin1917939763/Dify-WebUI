@@ -1,18 +1,18 @@
 :root {
     --primary-color: linear-gradient(to right, #00c6ff, #0072ff, #00c6ff);
-    --bg-color: #f4f7fc;
+    --bg-color: #ffffff;
     --text-color: #2b2d42;
     --message-bg: #ffffff;
-    --bot-message-bg:  #E8F0FF;
-    --user-message-bg: #D7E5F5;
+    --bot-message-bg: #ffffff;
+    --user-message-bg: #ffffff;
     --user-message-color: #111111;
     --sidebar-width: 300px;
     --sidebar-collapsed-width: 0px;
     --header-height: 50px;
     --message-radius: 1.2rem;
-    --message-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    --hover-transform: translateY(-5px);
-    --hover-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    --message-shadow: none;
+    --hover-transform: none;
+    --hover-shadow: none;
     --animation-duration: 0.3s;
     --avatar-size: 60px;
     --avatar-margin: 10px;
@@ -70,6 +70,7 @@
                 border-color var(--transition-timing),
                 color var(--transition-timing),
                 box-shadow var(--transition-timing);
+    border-color: transparent;
 }
 
 body {
@@ -95,8 +96,8 @@ button {
 }
 
 button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: none;
+    box-shadow: none;
 }
 
 /* 添加全局链接样式 */
@@ -198,8 +199,8 @@ table {
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 4px;
+    height: 4px;
 }
 
 ::-webkit-scrollbar-track {
@@ -207,12 +208,12 @@ table {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 /* 文本选择样式 */

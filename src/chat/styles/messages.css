@@ -38,13 +38,13 @@
     border-radius: 50%;
     margin: 0 var(--avatar-margin);
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: none;
+    border: none;
     transition: transform 0.3s ease;
 }
 
 .avatar:hover {
-    transform: scale(1.05);
+    transform: none;
 }
 
 .message-content-wrapper {
@@ -60,14 +60,9 @@
     font-size: 15px;
     letter-spacing: 0.2px;
     color: #2c3e50;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0.85),
-        rgba(255, 255, 255, 0.78)
-    );
-    backdrop-filter: blur(15px) saturate(180%);
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+    border: none;
+    box-shadow: none;
     backface-visibility: hidden;
     transform: translateZ(0);
 }
@@ -97,22 +92,23 @@
 
 .message.user .message-content {
     border-radius: var(--message-radius) var(--message-radius) 0 var(--message-radius);
-    background: linear-gradient(135deg, var(--user-message-bg), #ffffff);
+    background: #ffffff;
     color: rgba(0, 0, 0, 0.85);
     font-family: "Inter", "Segoe UI", sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.6;
     padding: 12px 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    border: none;
     display: block;
 }
 
 .message.bot .message-content {
     border-radius: var(--message-radius) var(--message-radius) var(--message-radius) 0;
-    background: linear-gradient(135deg, #ffffff, var(--bot-message-bg));
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    border: none;
+    box-shadow: none;
     opacity: 1;
     transform: none;
 }
@@ -132,11 +128,12 @@
     margin: 1.2rem 0;
     transform: translateZ(0);
     backface-visibility: hidden;
+    border: none;
 }
 
 .message-content pre:hover {
     transform: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
 }
 
 .code-toolbar {
@@ -148,7 +145,7 @@
     align-items: center;
     padding: 0.5rem 1rem;
     background: rgba(0, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
     opacity: 1;
     height: 2.5rem;
 }
@@ -210,7 +207,7 @@
     font-family: 'JetBrains Mono', Consolas, monospace;
     background: transparent;
     color: #a9b7c6;
-    border: 1px solid rgba(169, 183, 198, 0.4);
+    border: none;
 }
 
 .copy-button:hover {
@@ -228,7 +225,7 @@
 .toggle-button {
     background: transparent;
     color: #a9b7c6;
-    border: 1px solid rgba(169, 183, 198, 0.4);
+    border: none;
 }
 
 .toggle-button:hover {
@@ -247,7 +244,7 @@
     z-index: 1000;
     background: white;
     border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
     padding: 4px;
     transform: translateY(-50%);
 }
@@ -340,13 +337,14 @@
     border-spacing: 0;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: none;
+    border: none;
 }
 
 .message-content th,
 .message-content td {
     padding: 0.8em 1em;
-    border: 1px solid #e2e8f0;
+    border: none;
     background: white;
 }
 
@@ -358,7 +356,7 @@
 .message-content blockquote {
     margin: 1.2em 0;
     padding: 0.8em 1.2em;
-    border-left: 4px solid #3b82f6;
+    border-left: none;
     background: rgba(59, 130, 246, 0.05);
     border-radius: 0 4px 4px 0;
     color: #4a5568;
@@ -367,12 +365,12 @@
 .message-content a {
     color: #3b82f6;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: none;
     transition: all 0.2s ease;
 }
 
 .message-content a:hover {
-    border-bottom-color: #3b82f6;
+    border-bottom-color: transparent;
     color: #2563eb;
 }
 
@@ -384,7 +382,7 @@
     border-radius: 8px;
     overflow: hidden;
     backdrop-filter: blur(12px) saturate(160%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 16px rgba(255, 255, 255, 0.3) inset;
+    box-shadow: none;
 }
 
 .code-actions button {
@@ -728,12 +726,12 @@
     max-width: 100%;
     border-radius: 8px;
     margin: 1em 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     transition: transform 0.3s ease;
 }
 
 .message-content img:hover {
-    transform: scale(1.02);
+    transform: none;
 }
 
 /* 图片上传预览样式 */
@@ -757,8 +755,8 @@
     max-height: 100px; /* 限制图片最大高度 */
     object-fit: contain;
     border-radius: 6px;  /* 稍微调小圆角 */
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: none;
+    box-shadow: none;
     background: rgba(0, 0, 0, 0.03);
 }
 
@@ -798,7 +796,7 @@
     font-size: 14px;  /* 调小字体大小 */
     opacity: 0;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: none;
     z-index: 10;  /* 确保按钮在最上层 */
 }
 
@@ -946,26 +944,18 @@
 /* 优化暗色模式 */
 @media (prefers-color-scheme: dark) {
     .message-content {
-        background: linear-gradient(
-            to right,
-            rgba(30, 30, 30, 0.95),
-            rgba(30, 30, 30, 0.98)
-        );
-        color: #e0e0e0;
+        background: #ffffff;
+        color: #2c3e50;
+        border: 1px solid rgba(0, 0, 0, 0.1);
     }
     
     .message.user .message-content {
-        background: linear-gradient(
-            135deg,
-            var(--user-message-bg-dark, #2a2a2a),
-            #1a1a1a
-        );
-        color: rgba(255, 255, 255, 0.9);
+        background: #ffffff;
+        color: rgba(0, 0, 0, 0.85);
     }
     
     .message-content code:not(pre code) {
-        background: rgba(255, 255, 255, 0.1);
-        color: #ff69b4;
+        background: rgba(0, 0, 0, 0.05);
     }
 }
 
@@ -1048,4 +1038,24 @@
 
 @keyframes cursor-blink {
     50% { opacity: 0; }
+}
+
+.welcome-suggestion-items button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    color: var(--text-color);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: left;
+    font-size: 0.95rem;
+    box-shadow: none;
+}
+
+.welcome-suggestion-items button:hover {
+    background: var(--message-bg);
+    border-color: var(--primary-color);
+    transform: none;
 }
